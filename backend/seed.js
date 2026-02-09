@@ -166,6 +166,30 @@ const recipes = [
         instructions: "1. Mix filling. 2. Fold into wrappers. 3. Pan-fry until bottom is golden, then steam.",
         cuisineType: "Japanese",
         image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        title: "Nasi Goreng",
+        description: "Indonesian fried rice with sweet soy sauce, shallots, garlic, and tamarind.",
+        ingredients: ["Rice", "Sweet soy sauce (Kecap Manis)", "Shallots", "Garlic", "Chili", "Egg", "Prawn crackers"],
+        instructions: "1. Stir-fry aromatics. 2. Add rice and sauces. 3. Serve with fried egg and crackers.",
+        cuisineType: "Other", // or 'Indonesian' if I update enum, but enum has 'Other'
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        title: "Laksa",
+        description: "Spicy noodle soup popular in Peranakan cuisine, consisting of rice noodles with chicken, prawn or fish, served in spicy soup.",
+        ingredients: ["Rice noodles", "Coconut milk", "Curry paste", "Prawns", "Fish cake", "Bean sprouts", "Laksa leaves"],
+        instructions: "1. Prepare spicy coconut broth. 2. Cook noodles and toppings. 3. Assemble bowl with broth.",
+        cuisineType: "Other",
+        image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        title: "Chicken Adobo",
+        description: "A popular Filipino dish that involves meat, seafood, or vegetables marinated in vinegar, soy sauce, garlic, and black peppercorns.",
+        ingredients: ["Chicken", "Soy sauce", "Vinegar", "Garlic", "Bay leaves", "Black peppercorns"],
+        instructions: "1. Marinate chicken. 2. Simmer in marinade until tender. 3. Brown meat and reduce sauce.",
+        cuisineType: "Other",
+        image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&q=80&w=1000"
     }
 ];
 
