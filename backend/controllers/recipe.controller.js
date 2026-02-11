@@ -6,7 +6,8 @@ const recipeSchema = Joi.object({
     description: Joi.string().required(),
     ingredients: Joi.array().items(Joi.string()).required(),
     instructions: Joi.string().required(),
-    cuisineType: Joi.string().valid('Chinese', 'Japanese', 'Korean', 'Thai', 'Vietnamese', 'Indian', 'Other').required(),
+    cuisineType: Joi.string().valid('Chinese', 'Japanese', 'Korean', 'Thai', 'Vietnamese', 'Indian', 'Dessert', 'Other').required(),
+    image: Joi.string().uri().allow('', null).optional(),
 });
 
 exports.createRecipe = async (req, res, next) => {
@@ -25,6 +26,15 @@ exports.createRecipe = async (req, res, next) => {
 exports.getAllRecipes = async (req, res, next) => {
     try {
         const recipes = await Recipe.find().populate('author', 'username email');
+        res.json(recipes);
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.getMyRecipes = async (req, res, next) => {
+    try {
+        const recipes = await Recipe.find({ author: req.user.id }).populate('author', 'username email');
         res.json(recipes);
     } catch (err) {
         next(err);

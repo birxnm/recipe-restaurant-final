@@ -38,16 +38,16 @@ exports.register = async (req, res, next) => {
 
         await user.save();
 
-        if (process.env.SMTP_HOST) {
-            try {
-                await sendEmail({
-                    email: user.email,
-                    subject: 'Welcome to Asian Food Explorer!',
-                    message: `Hello ${user.username},\n\nWelcome to our platform! Start exploring delicious Asian recipes today.`,
-                });
-            } catch (err) {
-                console.error('Email could not be sent', err);
-            }
+        // Send Welcome Email
+        try {
+            await sendEmail({
+                email: user.email,
+                subject: 'Welcome to Asian Food Explorer!',
+                message: `Hello ${user.username},\n\nWelcome to our platform! Start exploring delicious Asian recipes today.\n\nBest regards,\nThe Asian Food Explorer Team`
+            });
+        } catch (err) {
+            console.error('Email could not be sent', err);
+            // We don't want to stop registration if email fails, just log it
         }
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
@@ -56,7 +56,14 @@ exports.register = async (req, res, next) => {
 
         res.status(201).json({
             token,
-            user: { id: user._id, username: user.username, email: user.email, role: user.role },
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role,
+                bio: user.bio,
+                profileImage: user.profileImage
+            },
         });
     } catch (err) {
         next(err);
@@ -82,7 +89,14 @@ exports.login = async (req, res, next) => {
 
         res.json({
             token,
-            user: { id: user._id, username: user.username, email: user.email, role: user.role },
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role,
+                bio: user.bio,
+                profileImage: user.profileImage
+            },
         });
     } catch (err) {
         next(err);

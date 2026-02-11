@@ -20,7 +20,12 @@ const recipeSchema = new mongoose.Schema({
     cuisineType: {
         type: String,
         required: true,
-        enum: ['Chinese', 'Japanese', 'Korean', 'Thai', 'Vietnamese', 'Indian', 'Other'],
+        enum: ['Chinese', 'Japanese', 'Korean', 'Thai', 'Vietnamese', 'Indian', 'Dessert', 'Other']
+    },
+    difficulty: {
+        type: String,
+        enum: ['Easy', 'Medium', 'Hard'],
+        default: 'Medium'
     },
     image: {
         type: String,
